@@ -62,7 +62,7 @@ export default function Dashboard() {
 
         <div className="h-[600px]">
           <Calendar
-            localizer={localizer} // Pass the localizer here
+            localizer={localizer}
             events={events}
             startAccessor="start"
             endAccessor="end"

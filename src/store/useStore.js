@@ -2,13 +2,15 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 const useStore = create(
+
+  
   persist(
     (set) => ({
       interviews: [],
       interviewers: [
-        { id: 1, name: 'John Doe', role: 'Technical Lead' },
-        { id: 2, name: 'Jane Smith', role: 'HR Manager' },
-        { id: 3, name: 'Mike Johnson', role: 'Senior Developer' },
+        { id: 1, name: 'Sundar pichae', role: 'Technical Lead' },
+        { id: 2, name: 'Jeff Bejos', role: 'HR Manager' },
+        { id: 3, name: 'Elon Musk', role: 'Senior Developer' },
       ],
       addInterview: (interview) =>
         set((state) => ({
