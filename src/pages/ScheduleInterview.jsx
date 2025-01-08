@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import useStore from '../store/useStore';
+import emailjs from 'emailjs-com';
 
 const INTERVIEW_TYPES = ['Technical', 'HR', 'Behavioral'];
 
@@ -16,7 +17,25 @@ export default function ScheduleInterview() {
     type: '',
     notes: '',
   });
+  const handleEmailNotification = (e) =>{
 
+    const serviceID = import.meta.env.VITE_EMAIL_SERVICE_ID;
+    const templateID = import.meta.env.VITE_EMAIL_TEMPLATE_ID;
+    const userID = import.meta.env.VITE_EMAIL_USER_ID;
+    console.log("THe formdata is ", formData)
+    // Send email via EmailJS
+    emailjs.send(serviceID, templateID, formData, userID)
+        .then((response) => {
+            console.log("response ", response)
+            console.log('SUCCESS!', response.status, response.text);
+            setSubmitted(true); // Show success message
+        })
+        .catch((err) => {
+            console.error('FAILED...', err);
+            setError('Failed to send message. Please try again.');
+        });
+
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
     
