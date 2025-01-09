@@ -23,12 +23,12 @@ export default function ScheduleInterview() {
     const templateID = import.meta.env.VITE_EMAIL_TEMPLATE_ID;
     const userID = import.meta.env.VITE_EMAIL_USER_ID;
     console.log("THe formdata is ", formData)
-    // Send email via EmailJS
+   
     emailjs.send(serviceID, templateID, formData, userID)
         .then((response) => {
             console.log("response ", response)
             console.log('SUCCESS!', response.status, response.text);
-            setSubmitted(true); // Show success message
+            setSubmitted(true);
         })
         .catch((err) => {
             console.error('FAILED...', err);
