@@ -4,7 +4,7 @@ import moment from 'moment';
 import { useNavigate } from 'react-router-dom';
 import useStore from '../store/useStore';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import { DashboardInputCSs } from '../components/variables';
+import { DashboardInputCSs, EditLabelCSs } from '../components/variables';
 
 export default function Dashboard() {
   const { interviews, interviewers } = useStore();
@@ -36,7 +36,7 @@ export default function Dashboard() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Filter by Date</label>
+            <label className={EditLabelCSs}>Filter by Date</label>
             <input
               type="date"
               className={DashboardInputCSs}
@@ -46,7 +46,7 @@ export default function Dashboard() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Filter by Interviewer</label>
+            <label className={EditLabelCSs}>Filter by Interviewer</label>
             <select
               className={DashboardInputCSs}
               value={filter.interviewer}
