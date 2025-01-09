@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import useStore from '../store/useStore';
 import emailjs from 'emailjs-com';
+import { DeleteCancelBtn, ScheduleInterviewInputCSs, ScheduleLabelCSs, UpdateScheduleBtn } from '../components/variables';
 
 const INTERVIEW_TYPES = ['Technical', 'HR', 'Behavioral'];
 
@@ -55,21 +56,23 @@ export default function ScheduleInterview() {
       
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700">Candidate Name</label>
+          <label className={ScheduleLabelCSs}>Candidate Name</label>
           <input
             type="text"
             required
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+            className={ScheduleInterviewInputCSs}
+
             value={formData.candidateName}
             onChange={(e) => setFormData({ ...formData, candidateName: e.target.value })}
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">Interviewer</label>
+          <label className={ScheduleLabelCSs}>Interviewer</label>
           <select
             required
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+            className={ScheduleInterviewInputCSs}
+
             value={formData.interviewerId}
             onChange={(e) => setFormData({ ...formData, interviewerId: parseInt(e.target.value) })}
           >
@@ -84,22 +87,24 @@ export default function ScheduleInterview() {
 
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Start Time</label>
+            <label className={ScheduleLabelCSs}>Start Time</label>
             <input
               type="datetime-local"
               required
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+              className={ScheduleInterviewInputCSs}
+
               value={formData.startTime}
               onChange={(e) => setFormData({ ...formData, startTime: e.target.value })}
             />
           </div>
           
           <div>
-            <label className="block text-sm font-medium text-gray-700">End Time</label>
+            <label className={ScheduleLabelCSs}>End Time</label>
             <input
               type="datetime-local"
               required
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+              className={ScheduleInterviewInputCSs}
+
               value={formData.endTime}
               onChange={(e) => setFormData({ ...formData, endTime: e.target.value })}
             />
@@ -107,10 +112,10 @@ export default function ScheduleInterview() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">Interview Type</label>
+          <label className={ScheduleLabelCSs}>Interview Type</label>
           <select
             required
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+            className={ScheduleInterviewInputCSs}
             value={formData.type}
             onChange={(e) => setFormData({ ...formData, type: e.target.value })}
           >
@@ -124,9 +129,10 @@ export default function ScheduleInterview() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">Notes</label>
+          <label className={ScheduleLabelCSs}>Notes</label>
           <textarea
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                        className={ScheduleInterviewInputCSs}
+
             rows="3"
             value={formData.notes}
             onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
@@ -137,13 +143,13 @@ export default function ScheduleInterview() {
           <button
             type="button"
             onClick={() => navigate('/')}
-            className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
+                         className={DeleteCancelBtn}
           >
             Cancel
           </button>
           <button
             type="submit"
-            className="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700"
+            className={UpdateScheduleBtn}
           >
             Schedule Interview
           </button>

@@ -4,6 +4,7 @@ import moment from 'moment';
 import { useNavigate } from 'react-router-dom';
 import useStore from '../store/useStore';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { DashboardInputCSs } from '../components/variables';
 
 export default function Dashboard() {
   const { interviews, interviewers } = useStore();
@@ -38,7 +39,8 @@ export default function Dashboard() {
             <label className="block text-sm font-medium text-gray-700">Filter by Date</label>
             <input
               type="date"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+              className={DashboardInputCSs}
+
               value={filter.date}
               onChange={(e) => setFilter({ ...filter, date: e.target.value })}
             />
@@ -46,7 +48,7 @@ export default function Dashboard() {
           <div>
             <label className="block text-sm font-medium text-gray-700">Filter by Interviewer</label>
             <select
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+              className={DashboardInputCSs}
               value={filter.interviewer}
               onChange={(e) => setFilter({ ...filter, interviewer: e.target.value })}
             >
